@@ -1,4 +1,5 @@
 import 'package:distance_calculator/pages/home_page.dart';
+import 'package:distance_calculator/pages/put_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: const HomePage(),
+        home: const PutPage(),
         routes: {
           HomePage.id: (context) => const HomePage(),
         });

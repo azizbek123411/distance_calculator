@@ -1,8 +1,5 @@
-import 'package:distance_calculator/models/cordinates.dart';
 import 'package:distance_calculator/models/message_model.dart';
-import 'package:distance_calculator/models/result_model.dart';
 import 'package:distance_calculator/service/api_service.dart';
-import 'package:distance_calculator/widgets/textfields.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,13 +39,13 @@ class _HomePageState extends State<HomePage> {
     final status = await ApiService.deleteMessage(id);
     if (status) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Deleted'),
+         SnackBar(
+          content: Text('Message $id Deleted'),
           backgroundColor: Colors.grey,
         ),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
+       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Xatolik yuz berdi."),
         ),
@@ -140,9 +137,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                   title: Text(message.title),
                   subtitle: Text(message.body),
-                  trailing: const Icon(
-                    Icons.delete,
-                    color: Colors.black,
+                  trailing: IconButton(
+                    onPressed: ()async{
+                      deleteMessage(message.id!);
+                    },
+                    icon: const Icon(Icons.delete),
                   ),
                 );
               },
